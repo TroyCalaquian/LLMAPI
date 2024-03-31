@@ -1,10 +1,10 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
-model_id = "cardiffnlp/twitter-roberta-base-sentiment-latest"
+model_id = "facebook/blenderbot-400M-distill"
 tokenizer = AutoTokenizer.from_pretrained(model_id, legacy = False)
 model = AutoModelForSequenceClassification.from_pretrained(model_id)
-pipeline = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
+chatbot_pipeline = pipeline("text2text-generation", model=model, tokenizer=tokenizer)
 
 def use_pipeline(text):
-  res = pipeline(text)
+  res = chatbot_pipeline(text)
   return res

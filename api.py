@@ -3,11 +3,11 @@ from model import use_pipeline
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/project')
 def intro():
   return 'Congrats, this is the entry point! Use /convert to convert smth'
 
-@app.route('/convert', methods=['POST'])
+@app.route('/project/answer', methods=['POST'])
 def convertroute():
   data = request.json
   text = data['text']
